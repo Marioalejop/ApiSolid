@@ -12,7 +12,7 @@ namespace ApiSolid.Controllers
 
         public ProductosController(ProductoService service)
         {
-            _service = service;
+            _service = service; 
         }
 
         [HttpGet]
@@ -24,6 +24,13 @@ namespace ApiSolid.Controllers
         {
             _service.Add(producto);
             return Created("", producto);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _service.Delete(id);
+            return Ok("Producto eliminado correctamente");
         }
     }
 }
